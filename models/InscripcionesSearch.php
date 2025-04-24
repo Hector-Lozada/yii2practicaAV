@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Usuarios;
+use app\models\Inscripciones;
 
 /**
- * UsuariosSearch represents the model behind the search form of `app\models\Usuarios`.
+ * InscripcionesSearch represents the model behind the search form of `app\models\Inscripciones`.
  */
-class UsuariosSearch extends Usuarios
+class InscripcionesSearch extends Inscripciones
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class UsuariosSearch extends Usuarios
     public function rules()
     {
         return [
-            [['idusuarios'], 'integer'],
-            [['nombre', 'email', 'telefono', 'tipo_usuario'], 'safe'],
+            [['idinscripciones', 'usuario_id', 'evento_id'], 'integer'],
+            [['fecha_inscripcion'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UsuariosSearch extends Usuarios
      */
     public function search($params, $formName = null)
     {
-        $query = Usuarios::find();
+        $query = Inscripciones::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,11 @@ class UsuariosSearch extends Usuarios
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idusuarios' => $this->idusuarios,
+            'idinscripciones' => $this->idinscripciones,
+            'usuario_id' => $this->usuario_id,
+            'evento_id' => $this->evento_id,
+            'fecha_inscripcion' => $this->fecha_inscripcion,
         ]);
-
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'telefono', $this->telefono])
-            ->andFilterWhere(['like', 'tipo_usuario', $this->tipo_usuario]);
 
         return $dataProvider;
     }

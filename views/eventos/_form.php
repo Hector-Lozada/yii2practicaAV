@@ -4,21 +4,21 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var app\models\Usuarios $model */
+/** @var app\models\Eventos $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="usuarios-form">
+<div class="eventos-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'descripcion')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'fecha_evento')->textInput() ?>
 
-    <?= $form->field($model, 'tipo_usuario')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ubicacion')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

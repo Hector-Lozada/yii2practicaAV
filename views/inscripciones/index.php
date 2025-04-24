@@ -1,24 +1,24 @@
 <?php
 
-use app\models\Usuarios;
+use app\models\Inscripciones;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var app\models\UsuariosSearch $searchModel */
+/** @var app\models\InscripcionesSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Usuarios');
+$this->title = Yii::t('app', 'Inscripciones');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="usuarios-index">
+<div class="inscripciones-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Usuarios'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Inscripciones'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -30,15 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idusuarios',
-            'nombre',
-            'email:email',
-            'telefono',
-            'tipo_usuario',
+            'idinscripciones',
+            'usuario_id',
+            'evento_id',
+            'fecha_inscripcion',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Usuarios $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'idusuarios' => $model->idusuarios]);
+                'urlCreator' => function ($action, Inscripciones $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'idinscripciones' => $model->idinscripciones]);
                  }
             ],
         ],

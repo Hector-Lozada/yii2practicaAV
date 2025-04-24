@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Usuarios;
-use app\models\UsuariosSearch;
+use app\models\Inscripciones;
+use app\models\InscripcionesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UsuariosController implements the CRUD actions for Usuarios model.
+ * InscripcionesController implements the CRUD actions for Inscripciones model.
  */
-class UsuariosController extends Controller
+class InscripcionesController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Lists all Usuarios models.
+     * Lists all Inscripciones models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new UsuariosSearch();
+        $searchModel = new InscripcionesSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,30 +48,30 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Displays a single Usuarios model.
-     * @param int $idusuarios Idusuarios
+     * Displays a single Inscripciones model.
+     * @param int $idinscripciones Idinscripciones
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($idusuarios)
+    public function actionView($idinscripciones)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idusuarios),
+            'model' => $this->findModel($idinscripciones),
         ]);
     }
 
     /**
-     * Creates a new Usuarios model.
+     * Creates a new Inscripciones model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Usuarios();
+        $model = new Inscripciones();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'idusuarios' => $model->idusuarios]);
+                return $this->redirect(['view', 'idinscripciones' => $model->idinscripciones]);
             }
         } else {
             $model->loadDefaultValues();
@@ -83,18 +83,18 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Updates an existing Usuarios model.
+     * Updates an existing Inscripciones model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $idusuarios Idusuarios
+     * @param int $idinscripciones Idinscripciones
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($idusuarios)
+    public function actionUpdate($idinscripciones)
     {
-        $model = $this->findModel($idusuarios);
+        $model = $this->findModel($idinscripciones);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idusuarios' => $model->idusuarios]);
+            return $this->redirect(['view', 'idinscripciones' => $model->idinscripciones]);
         }
 
         return $this->render('update', [
@@ -103,29 +103,29 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Deletes an existing Usuarios model.
+     * Deletes an existing Inscripciones model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $idusuarios Idusuarios
+     * @param int $idinscripciones Idinscripciones
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($idusuarios)
+    public function actionDelete($idinscripciones)
     {
-        $this->findModel($idusuarios)->delete();
+        $this->findModel($idinscripciones)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Usuarios model based on its primary key value.
+     * Finds the Inscripciones model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $idusuarios Idusuarios
-     * @return Usuarios the loaded model
+     * @param int $idinscripciones Idinscripciones
+     * @return Inscripciones the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idusuarios)
+    protected function findModel($idinscripciones)
     {
-        if (($model = Usuarios::findOne(['idusuarios' => $idusuarios])) !== null) {
+        if (($model = Inscripciones::findOne(['idinscripciones' => $idinscripciones])) !== null) {
             return $model;
         }
 

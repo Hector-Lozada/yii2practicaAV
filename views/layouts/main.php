@@ -42,15 +42,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Actor', 'url' => ['/actor/index']],
             ['label' => 'Usuarios', 'url' => ['/usuarios/index']],
-            ['label' => 'Carrito', 'url' => ['/carrito/index']],
-            ['label' => 'Categoria', 'url' => ['/categorias/index']],
-            ['label' => 'Detalles', 'url' => ['/detalles/index']],
-            ['label' => 'Pedidos', 'url' => ['/pedidos/index']],
-            ['label' => 'Productos', 'url' => ['/productos/index']],
-            ['label' => 'Resenas', 'url' => ['/resenas/index']],
-            ['label' => 'Direccion', 'url' => ['/direcciones/index']],
+            ['label' => 'Eventos', 'url' => ['/eventos/index']],
+            ['label' => 'Inscripciones', 'url' => ['/inscripciones/index']],
             Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]
                 : '<li class="nav-item">'

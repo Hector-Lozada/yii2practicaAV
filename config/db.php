@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=192.168.56.2;dbname=amazon_db',
+    'dsn' => 'mysql:host=192.168.56.2;dbname=GestionEventos',
     'username' => 'remote_estu_alissonvanegas',
     'password' => '1234567890',
     'charset' => 'utf8',

@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Usuarios;
-use app\models\UsuariosSearch;
+use app\models\Eventos;
+use app\models\EventosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UsuariosController implements the CRUD actions for Usuarios model.
+ * EventosController implements the CRUD actions for Eventos model.
  */
-class UsuariosController extends Controller
+class EventosController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Lists all Usuarios models.
+     * Lists all Eventos models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new UsuariosSearch();
+        $searchModel = new EventosSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,30 +48,30 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Displays a single Usuarios model.
-     * @param int $idusuarios Idusuarios
+     * Displays a single Eventos model.
+     * @param int $ideventos Ideventos
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($idusuarios)
+    public function actionView($ideventos)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idusuarios),
+            'model' => $this->findModel($ideventos),
         ]);
     }
 
     /**
-     * Creates a new Usuarios model.
+     * Creates a new Eventos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Usuarios();
+        $model = new Eventos();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'idusuarios' => $model->idusuarios]);
+                return $this->redirect(['view', 'ideventos' => $model->ideventos]);
             }
         } else {
             $model->loadDefaultValues();
@@ -83,18 +83,18 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Updates an existing Usuarios model.
+     * Updates an existing Eventos model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $idusuarios Idusuarios
+     * @param int $ideventos Ideventos
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($idusuarios)
+    public function actionUpdate($ideventos)
     {
-        $model = $this->findModel($idusuarios);
+        $model = $this->findModel($ideventos);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idusuarios' => $model->idusuarios]);
+            return $this->redirect(['view', 'ideventos' => $model->ideventos]);
         }
 
         return $this->render('update', [
@@ -103,29 +103,29 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Deletes an existing Usuarios model.
+     * Deletes an existing Eventos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $idusuarios Idusuarios
+     * @param int $ideventos Ideventos
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($idusuarios)
+    public function actionDelete($ideventos)
     {
-        $this->findModel($idusuarios)->delete();
+        $this->findModel($ideventos)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Usuarios model based on its primary key value.
+     * Finds the Eventos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $idusuarios Idusuarios
-     * @return Usuarios the loaded model
+     * @param int $ideventos Ideventos
+     * @return Eventos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idusuarios)
+    protected function findModel($ideventos)
     {
-        if (($model = Usuarios::findOne(['idusuarios' => $idusuarios])) !== null) {
+        if (($model = Eventos::findOne(['ideventos' => $ideventos])) !== null) {
             return $model;
         }
 
