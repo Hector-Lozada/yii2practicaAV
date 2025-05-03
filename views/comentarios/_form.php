@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var app\models\Inscripciones $model */
+/** @var app\models\Comentarios $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="inscripciones-form">
+<div class="comentarios-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -16,15 +16,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'evento_id')->textInput() ?>
 
-    <?= $form->field($model, 'fecha_inscripcion')->textInput() ?>
+    <?= $form->field($model, 'contenido')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'asistencia')->textInput() ?>
+    <?= $form->field($model, 'multimedia_path')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'certificado_generado')->textInput() ?>
-
-    <?= $form->field($model, 'feedback')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'calificacion')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

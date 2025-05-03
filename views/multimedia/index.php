@@ -1,24 +1,24 @@
 <?php
 
-use app\models\Eventos;
+use app\models\Multimedia;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var app\models\EventosSearch $searchModel */
+/** @var app\models\MultimediaSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = Yii::t('app', 'Eventos');
+$this->title = Yii::t('app', 'Multimedia');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="eventos-index">
+<div class="multimedia-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Eventos'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Multimedia'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -30,21 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'ideventos',
-            'idcategoria',
-            'nombre',
-            'descripcion:ntext',
-            'fecha_inicio',
-            //'fecha_fin',
-            //'ubicacion',
-            //'imagen_portada',
-            //'max_participantes',
-            //'estado',
+            'idmultimedia:datetime',
+            'idevento',
+            'tipo',
+            'ruta_archivo',
+            'titulo',
+            //'descripcion:ntext',
+            //'es_principal',
+            //'orden',
             //'created_at',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Eventos $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'ideventos' => $model->ideventos]);
+                'urlCreator' => function ($action, Multimedia $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'idmultimedia' => $model->idmultimedia]);
                  }
             ],
         ],

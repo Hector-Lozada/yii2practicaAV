@@ -19,6 +19,13 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'formatter' => [
+        'class' => 'yii\i18n\Formatter',
+        'currencyCode' => 'USD', // Configura tu moneda preferida (USD, EUR, MXN, etc.)
+        'decimalSeparator' => '.',
+        'thousandSeparator' => ',',
+        // Elimina las opciones de NumberFormatter
+    ],
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,

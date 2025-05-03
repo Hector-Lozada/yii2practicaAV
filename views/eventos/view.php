@@ -30,10 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'ideventos',
+            'idcategoria',
             'nombre',
-            'descripcion',
-            'fecha_evento',
+            'descripcion:ntext',
+            'fecha_inicio',
+            'fecha_fin',
             'ubicacion',
+            'imagen_portada',
+            'max_participantes',
+            'estado',
+            'created_at',
         ],
     ]) ?>
 

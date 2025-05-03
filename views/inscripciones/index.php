@@ -34,6 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'usuario_id',
             'evento_id',
             'fecha_inscripcion',
+            'asistencia',
+            //'certificado_generado',
+            //'feedback:ntext',
+            //'calificacion',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Inscripciones $model, $key, $index, $column) {

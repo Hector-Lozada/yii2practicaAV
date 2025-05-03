@@ -18,7 +18,7 @@ class UsuariosSearch extends Usuarios
     {
         return [
             [['idusuarios'], 'integer'],
-            [['nombre', 'email', 'telefono', 'tipo_usuario'], 'safe'],
+            [['nombre', 'email', 'password', 'telefono', 'tipo_usuario', 'avatar_path', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -60,12 +60,16 @@ class UsuariosSearch extends Usuarios
         // grid filtering conditions
         $query->andFilterWhere([
             'idusuarios' => $this->idusuarios,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'password', $this->password])
             ->andFilterWhere(['like', 'telefono', $this->telefono])
-            ->andFilterWhere(['like', 'tipo_usuario', $this->tipo_usuario]);
+            ->andFilterWhere(['like', 'tipo_usuario', $this->tipo_usuario])
+            ->andFilterWhere(['like', 'avatar_path', $this->avatar_path]);
 
         return $dataProvider;
     }

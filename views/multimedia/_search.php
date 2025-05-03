@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var app\models\UsuariosSearch $model */
+/** @var app\models\MultimediaSearch $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="usuarios-search">
+<div class="multimedia-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -18,23 +18,23 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'idusuarios') ?>
+    <?= $form->field($model, 'idmultimedia') ?>
 
-    <?= $form->field($model, 'nombre') ?>
+    <?= $form->field($model, 'idevento') ?>
 
-    <?= $form->field($model, 'email') ?>
+    <?= $form->field($model, 'tipo') ?>
 
-    <?= $form->field($model, 'password') ?>
+    <?= $form->field($model, 'ruta_archivo') ?>
 
-    <?= $form->field($model, 'telefono') ?>
+    <?= $form->field($model, 'titulo') ?>
 
-    <?php // echo $form->field($model, 'tipo_usuario') ?>
+    <?php // echo $form->field($model, 'descripcion') ?>
 
-    <?php // echo $form->field($model, 'avatar_path') ?>
+    <?php // echo $form->field($model, 'es_principal') ?>
+
+    <?php // echo $form->field($model, 'orden') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

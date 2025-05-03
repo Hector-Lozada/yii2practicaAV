@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Eventos;
+use app\models\Categorias;
 
 /**
- * EventosSearch represents the model behind the search form of `app\models\Eventos`.
+ * CategoriasSearch represents the model behind the search form of `app\models\Categorias`.
  */
-class EventosSearch extends Eventos
+class CategoriasSearch extends Categorias
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class EventosSearch extends Eventos
     public function rules()
     {
         return [
-            [['ideventos', 'idcategoria', 'max_participantes'], 'integer'],
-            [['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'ubicacion', 'imagen_portada', 'estado', 'created_at'], 'safe'],
+            [['idcategorias'], 'integer'],
+            [['nombre', 'descripcion', 'icono_path'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class EventosSearch extends Eventos
      */
     public function search($params, $formName = null)
     {
-        $query = Eventos::find();
+        $query = Categorias::find();
 
         // add conditions that should always apply here
 
@@ -59,19 +59,12 @@ class EventosSearch extends Eventos
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'ideventos' => $this->ideventos,
-            'idcategoria' => $this->idcategoria,
-            'fecha_inicio' => $this->fecha_inicio,
-            'fecha_fin' => $this->fecha_fin,
-            'max_participantes' => $this->max_participantes,
-            'created_at' => $this->created_at,
+            'idcategorias' => $this->idcategorias,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'descripcion', $this->descripcion])
-            ->andFilterWhere(['like', 'ubicacion', $this->ubicacion])
-            ->andFilterWhere(['like', 'imagen_portada', $this->imagen_portada])
-            ->andFilterWhere(['like', 'estado', $this->estado]);
+            ->andFilterWhere(['like', 'icono_path', $this->icono_path]);
 
         return $dataProvider;
     }

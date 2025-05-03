@@ -32,8 +32,25 @@ $this->params['breadcrumbs'][] = $this->title;
             'idusuarios',
             'nombre',
             'email:email',
+            'password',
             'telefono',
             'tipo_usuario',
+            [
+                'attribute' => 'avatar_path',
+                'format' => 'html',
+                'value' => function($model) {
+                    if ($model->avatar_path) {
+                        return Html::img($model->avatar_path, [
+                            'style' => 'max-width: 300px; max-height: 300px;',
+                            'class' => 'img-thumbnail',
+                            'alt' => 'Avatar',
+                        ]);
+                    }
+                    return 'No hay imagen';
+                },
+            ],
+            'created_at',
+            'updated_at',
         ],
     ]) ?>
 

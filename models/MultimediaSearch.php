@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Eventos;
+use app\models\Multimedia;
 
 /**
- * EventosSearch represents the model behind the search form of `app\models\Eventos`.
+ * MultimediaSearch represents the model behind the search form of `app\models\Multimedia`.
  */
-class EventosSearch extends Eventos
+class MultimediaSearch extends Multimedia
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class EventosSearch extends Eventos
     public function rules()
     {
         return [
-            [['ideventos', 'idcategoria', 'max_participantes'], 'integer'],
-            [['nombre', 'descripcion', 'fecha_inicio', 'fecha_fin', 'ubicacion', 'imagen_portada', 'estado', 'created_at'], 'safe'],
+            [['idmultimedia', 'idevento', 'es_principal', 'orden'], 'integer'],
+            [['tipo', 'ruta_archivo', 'titulo', 'descripcion', 'created_at'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class EventosSearch extends Eventos
      */
     public function search($params, $formName = null)
     {
-        $query = Eventos::find();
+        $query = Multimedia::find();
 
         // add conditions that should always apply here
 
@@ -59,19 +59,17 @@ class EventosSearch extends Eventos
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'ideventos' => $this->ideventos,
-            'idcategoria' => $this->idcategoria,
-            'fecha_inicio' => $this->fecha_inicio,
-            'fecha_fin' => $this->fecha_fin,
-            'max_participantes' => $this->max_participantes,
+            'idmultimedia' => $this->idmultimedia,
+            'idevento' => $this->idevento,
+            'es_principal' => $this->es_principal,
+            'orden' => $this->orden,
             'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'descripcion', $this->descripcion])
-            ->andFilterWhere(['like', 'ubicacion', $this->ubicacion])
-            ->andFilterWhere(['like', 'imagen_portada', $this->imagen_portada])
-            ->andFilterWhere(['like', 'estado', $this->estado]);
+        $query->andFilterWhere(['like', 'tipo', $this->tipo])
+            ->andFilterWhere(['like', 'ruta_archivo', $this->ruta_archivo])
+            ->andFilterWhere(['like', 'titulo', $this->titulo])
+            ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
 
         return $dataProvider;
     }

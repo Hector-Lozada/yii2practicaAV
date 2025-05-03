@@ -17,8 +17,8 @@ class InscripcionesSearch extends Inscripciones
     public function rules()
     {
         return [
-            [['idinscripciones', 'usuario_id', 'evento_id'], 'integer'],
-            [['fecha_inscripcion'], 'safe'],
+            [['idinscripciones', 'usuario_id', 'evento_id', 'asistencia', 'certificado_generado', 'calificacion'], 'integer'],
+            [['fecha_inscripcion', 'feedback'], 'safe'],
         ];
     }
 
@@ -63,7 +63,12 @@ class InscripcionesSearch extends Inscripciones
             'usuario_id' => $this->usuario_id,
             'evento_id' => $this->evento_id,
             'fecha_inscripcion' => $this->fecha_inscripcion,
+            'asistencia' => $this->asistencia,
+            'certificado_generado' => $this->certificado_generado,
+            'calificacion' => $this->calificacion,
         ]);
+
+        $query->andFilterWhere(['like', 'feedback', $this->feedback]);
 
         return $dataProvider;
     }

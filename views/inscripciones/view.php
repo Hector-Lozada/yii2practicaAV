@@ -33,6 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'usuario_id',
             'evento_id',
             'fecha_inscripcion',
+            'asistencia',
+            'certificado_generado',
+            'feedback:ntext',
+            'calificacion',
         ],
     ]) ?>
 
